@@ -1,0 +1,20 @@
+To count primes in range of queries -> brute force is to take every number in ranger [l,r] and check for prime. This can lead to TLE. 
+Use Sieve of Eratosthenes logic to get the prime numbers.
+<b>The sieve of Eratosthenes is one of the most efficient ways to find all primes smaller than n when n is smaller than 10 million or so</b>
+
+We can create  matrix from 2 to n. (0 is not prime & 1 is neither prime nor composite)
+We take 2 and mark all numbers that are visible by 2 and also divisible by square of it. Similarly we do it for next unmarke numbers. 
+The numbers left unmarked are the prime numbers.
+Code ->
+
+```void sieveOfEratosthenes(int n){
+	boolean[] prime = new boolean[n+1];
+	Arrays.fill(prime,true);// marking all as true the prime ones will be false at the end.
+	
+	for(int i=2;i*i<=n;i++){
+		if(prime[i]==true){
+			for (int j = i * i;j <= n; j += i)
+                   			 prime[j] = false;
+}
+}
+}```
